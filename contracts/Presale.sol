@@ -88,6 +88,7 @@ contract NFTPresale is Ownable {
 
             locks[destination].total += vestingRate;
             if (buyAmount + locks[destination].paid == locks[destination].max) _claimed[destination] = true;
+            locks[destination].paid += buyAmount;
         }
 
         usdt.safeTransferFrom(destination, address(this), buyAmount);

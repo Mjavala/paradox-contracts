@@ -5,27 +5,27 @@ const { ethers } = require("hardhat");
 const { MerkleTree } = require("merkletreejs")
 const keccak256 = require("keccak256")
 const fs = require("fs")
-const data = require("../data/snap4.json")
+const data = require("../data/real.json")
 const web3 = require("web3");
 
 const clean = () => {
   let allLines = fs
-    .readFileSync("../data/paradoxSnapshot.txt")
+    .readFileSync("../data/data.log")
     .toString()
     .split("\n");
 
-  fs.writeFileSync("../data/paradoxSnapshot.txt", "", function () {
+  fs.writeFileSync("../data/data.log", "", function () {
     console.log("file is empty");
   });
   allLines.forEach(function (line) {
     const newLine = line + ",";
     console.log(newLine);
-    fs.appendFileSync("./input.txt", newLine.toString() + "\n");
+    fs.appendFileSync("./real.text", newLine.toString() + "\n");
   });
 
   // each line would have "candy" appended
   allLines = fs
-    .readFileSync("../data/paradoxSnapshot.txt")
+    .readFileSync("../data/real.text")
     .toString()
     .split("\n");
 };
@@ -95,7 +95,6 @@ const getProof = (tree) => {
 }
 
 const [root,tree ] = genMTree(data)
-
 console.log(root)
 
 module.exports = {
