@@ -5,7 +5,7 @@ const { ethers } = require("hardhat");
 const { MerkleTree } = require("merkletreejs")
 const keccak256 = require("keccak256")
 const fs = require("fs")
-const data = require("../data/snap1.json")
+const data = require("../data/real.json")
 const web3 = require("web3");
 
 const clean = () => {
